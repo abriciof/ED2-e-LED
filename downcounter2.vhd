@@ -20,13 +20,13 @@ entity downcounter2 is
 		clk: in bit;
 
 		-- Resultado da contagem: 4 bits
-		q: buffer integer range (2**4 - 1) downto 0 := 10
+		q: buffer integer range (2**4 - 1) downto 0 := 9 
 	);
 end entity downcounter2;
 
 -- Arquitetura
 architecture downcounter2_a of downcounter2 is
-	constant len_module: integer := 11;
+	constant len_module: integer := 10; 
 	constant max_count: integer := q'high;
 	constant max_module: integer := len_module-1;
 
@@ -54,7 +54,7 @@ architecture downcounter2_a of downcounter2 is
 	begin
 
 		-- Condição do passo base de operação.
-		if (count = 0) then
+		if (count <= 1) then
 			-- Passo base de operação.
 			next_count := max;
 				
