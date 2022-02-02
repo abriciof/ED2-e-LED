@@ -15,3 +15,7 @@
 > - [Delivery #14 - downcounter](https://github.com/abriciof/ED2-e-LED/blob/main/downcounter.vhd)
 > - [Delivery #15 - downcounter2](https://github.com/abriciof/ED2-e-LED/blob/main/downcounter2.vhd)
 >
+> ## Sprint #2
+>
+> - [Delivery #21 - logic_h0](https://ooo)
+>
