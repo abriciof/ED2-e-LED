@@ -14,7 +14,7 @@
 
 -- PROGRAM		"Quartus II 64-Bit"
 -- VERSION		"Version 13.0.0 Build 156 04/24/2013 SJ Web Edition"
--- CREATED		"Wed Feb 02 01:51:12 2022"
+-- CREATED		"Wed Feb 02 16:36:34 2022"
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.all; 
@@ -30,9 +30,6 @@ ENTITY Esquematico_Logic_h0 IS
 		reset :  IN  STD_LOGIC;
 		store :  IN  STD_LOGIC;
 		rst_on :  IN  STD_LOGIC;
-		gtin1 :  IN  STD_LOGIC;
-		datab5 :  IN  STD_LOGIC_VECTOR(3 DOWNTO 0);
-		datab7 :  IN  STD_LOGIC_VECTOR(3 DOWNTO 0);
 		Led_Green :  OUT  STD_LOGIC;
 		Led_Blue :  OUT  STD_LOGIC;
 		Led_Red :  OUT  STD_LOGIC
@@ -74,21 +71,31 @@ COMPONENT dsf_compare
 END COMPONENT;
 
 COMPONENT logic_h0
-	PORT(gt : IN STD_LOGIC;
+	PORT(enable : IN STD_LOGIC;
+		 gt : IN STD_LOGIC;
 		 lt : IN STD_LOGIC;
 		 q : OUT STD_LOGIC
 	);
 END COMPONENT;
 
+COMPONENT lpm_constant0
+	PORT(		 result : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
+	);
+END COMPONENT;
+
 SIGNAL	SYNTHESIZED_WIRE_0 :  STD_LOGIC_VECTOR(3 DOWNTO 0);
-SIGNAL	SYNTHESIZED_WIRE_5 :  STD_LOGIC_VECTOR(3 DOWNTO 0);
-SIGNAL	SYNTHESIZED_WIRE_3 :  STD_LOGIC;
+SIGNAL	SYNTHESIZED_WIRE_1 :  STD_LOGIC;
+SIGNAL	SYNTHESIZED_WIRE_9 :  STD_LOGIC_VECTOR(3 DOWNTO 0);
+SIGNAL	SYNTHESIZED_WIRE_3 :  STD_LOGIC_VECTOR(3 DOWNTO 0);
 SIGNAL	SYNTHESIZED_WIRE_4 :  STD_LOGIC;
+SIGNAL	SYNTHESIZED_WIRE_6 :  STD_LOGIC_VECTOR(3 DOWNTO 0);
+SIGNAL	SYNTHESIZED_WIRE_7 :  STD_LOGIC;
+SIGNAL	SYNTHESIZED_WIRE_8 :  STD_LOGIC;
 
 
 BEGIN 
-Led_Green <= SYNTHESIZED_WIRE_4;
-Led_Red <= SYNTHESIZED_WIRE_3;
+Led_Green <= SYNTHESIZED_WIRE_8;
+Led_Red <= SYNTHESIZED_WIRE_7;
 
 
 
@@ -106,29 +113,46 @@ PORT MAP(enable => enable,
 		 load_en => store,
 		 clk => clk,
 		 data => SYNTHESIZED_WIRE_0,
-		 q => SYNTHESIZED_WIRE_5);
+		 q => SYNTHESIZED_WIRE_9);
 
 
 b2v_inst2 : dsf_compare
 PORT MAP(enable => enable,
-		 gtin => gtin1,
-		 dataa => SYNTHESIZED_WIRE_5,
-		 datab => datab7,
-		 gtout => SYNTHESIZED_WIRE_3);
+		 eqin => SYNTHESIZED_WIRE_1,
+		 dataa => SYNTHESIZED_WIRE_9,
+		 datab => SYNTHESIZED_WIRE_3,
+		 gtout => SYNTHESIZED_WIRE_7);
 
 
 b2v_inst3 : dsf_compare
 PORT MAP(enable => enable,
-		 gtin => gtin1,
-		 dataa => SYNTHESIZED_WIRE_5,
-		 datab => datab5,
-		 ltout => SYNTHESIZED_WIRE_4);
+		 eqin => SYNTHESIZED_WIRE_4,
+		 dataa => SYNTHESIZED_WIRE_9,
+		 datab => SYNTHESIZED_WIRE_6,
+		 ltout => SYNTHESIZED_WIRE_8);
 
 
 b2v_inst4 : logic_h0
-PORT MAP(gt => SYNTHESIZED_WIRE_3,
-		 lt => SYNTHESIZED_WIRE_4,
+PORT MAP(enable => enable,
+		 gt => SYNTHESIZED_WIRE_7,
+		 lt => SYNTHESIZED_WIRE_8,
 		 q => Led_Blue);
+
+
+b2v_inst5 : lpm_constant0
+PORT MAP(		 result => SYNTHESIZED_WIRE_3);
+
+
+b2v_inst6 : lpm_constant0
+PORT MAP(		 result(0) => SYNTHESIZED_WIRE_1);
+
+
+b2v_inst7 : lpm_constant0
+PORT MAP(		 result => SYNTHESIZED_WIRE_6);
+
+
+b2v_inst8 : lpm_constant0
+PORT MAP(		 result(0) => SYNTHESIZED_WIRE_4);
 
 
 END bdf_type;

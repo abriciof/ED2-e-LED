@@ -12,6 +12,7 @@ use work.dsf_std.all;
 -- Entidade
 entity logic_h0 is
 	port(
+		enable: in bit;
 		gt: in bit; 
 		lt: in bit; 
 	
