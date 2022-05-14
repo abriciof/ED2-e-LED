@@ -18,4 +18,5 @@
 > ## Sprint #2
 >
 > - [Delivery #21 - logic_h0](https://github.com/abriciof/ED2-e-LED/blob/main/logic_h0.vhd) / [esquematico_logic_h0 (BDF)](https://github.com/abriciof/ED2-e-LED/blob/main/Esquematico_Logic_h0.bdf) / [esquematico_logic_h0 (VHDL)](https://github.com/abriciof/ED2-e-LED/blob/main/Esquematico_Logic_h0.vhd)
+> - [Delivery #22 - simulação da logic_h0](https://github.com/abriciof/ED2-e-LED/blob/main/Waveform.vwf) 
 >
